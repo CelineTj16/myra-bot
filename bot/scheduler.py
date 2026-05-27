@@ -6,9 +6,9 @@ SGT = pytz.timezone('Asia/Singapore')
 
 # You can update this list anytime
 SCHOOL_HOLIDAYS = [
-    ("2025-01-01", "2025-08-03"),  # Until 3 August 2025
-    ("2025-12-07", "2026-01-11"),  # 7 December 2025 - 11 January 2026
-    ("2026-05-10", "2026-08-02"),  # 10 May 2026 - 2 August 2026
+    ("2026-01-01", "2026-08-02"),  # Until 2 August 2026
+    ("2026-12-06", "2027-01-10"),  # 6 December 2026 - 10 January 2027
+    ("2027-05-09", "2027-08-01"),  # 9 May 2027 - 1 August 2027
 ]
 
 def get_singapore_time():

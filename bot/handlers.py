@@ -192,7 +192,7 @@ def daily_checkup():
     "Do you feel you’ve made progress this semester?"
     ]
     r = get_redis()
-    friend = "Jun Wei"
+    friend = random.choice(list(FRIEND_TELEGRAM_IDS.keys()))
     r.hset("wellbeing_questions", friend, "true")
     send_message(FRIEND_TELEGRAM_IDS[friend], random.choice(wellbeing_questions))
 
@@ -345,29 +345,18 @@ def handle_command(chat_id, text, user_id, user_name):
             "FF miniwok",
             "FF snail noodles",
             "FF XLB",
-            "Jun Wei",
             "Fong Seng",
             "Amaans",
             "Nana Thai",
             "Niqqis",
             "Macs"
         ]
-        if random.randint(0,50) == 1 and user_name == "Jia Xin":
-            send_message(chat_id, "I highly reccomend you eat Jun Wei.")
-        elif random.randint(0,3) == 1 and user_name == "Alycia":
-            send_message(chat_id, "MEOWWWWW. Why u cannot decide lol noob")
-        elif random.randint(0,50) == 1:
-            send_message(chat_id, "Eat DH la fuck. Pay so much already.")
-        else:
-            send_message(chat_id, random.choice(options))
+        send_message(chat_id, random.choice(options))
 
     elif cmd == "/gay":
-        if user_name == "Jun Wei":
-            send_message(chat_id, "Scale Broken!! User is unbelievably gay! 🤯🤯🤯")
-        else:
-            num = random.randint(75, 100)
-            msg = f"{user_name} is {num}% gay!"
-            send_message(chat_id, msg)
+        num = random.randint(75, 100)
+        msg = f"{user_name} is {num}% gay!"
+        send_message(chat_id, msg)
 
     elif cmd == "/view_schedule":
         duty_schedule = load_duty_schedule()
@@ -428,7 +417,7 @@ def handle_command(chat_id, text, user_id, user_name):
       if (len(prompt) == 0):
         send_message(chat_id, "Eh? What do you want to ask? Don't waste my time. -MG Myra")
         return
-      elif (len(prompt) >= 250 and user_name != "Karthik"):
+      elif (len(prompt) >= 250):
         send_message(chat_id, "Oi. Yappa yappa yappa. Don't waste my time. Can TLDR or not. -MG Myra")
         return
       else:
@@ -676,12 +665,6 @@ Reply with *Yes* or *No*"""
         send_message(user_id, random.choice(response_tone_scale))
         r.hdel("wellbeing_questions", str(user_name))
         return
-    
-    if user_name == "Jia Xin":
-        num = random.choice(range(100))
-        print(num)
-        if num == 1:
-            send_message(chat_id, "DINGDINGDONG DINGDINGDONG HELLO TURRITOPSIS MYRA TEO JIA XIN")
     
 def extract_text_from_image_with_gpt(file_data):
     import base64
